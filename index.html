@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador K-Chief 700</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Simulador de Provas - K-Chief 700</h1>
+            <nav>
+                <button id="btn-novo-teste" class="btn-primary">Novo Teste</button>
+                <button id="btn-historico" class="btn-secondary">Histórico</button>
+            </nav>
+        </header>
+
+        <main>
+            <!-- Tela de Configuração -->
+            <div id="config-screen" class="screen active">
+                <div class="card">
+                    <h2>Configurar Novo Teste</h2>
+                    <form id="config-form">
+                        <div class="form-group">
+                            <label for="student-name">Seu Nome:</label>
+                            <input type="text" id="student-name" required placeholder="Digite seu nome">
+                        </div>
+                        <div class="form-group">
+                            <label for="num-questions">Número de Questões:</label>
+                            <input type="number" id="num-questions" min="1" max="100" value="20" required>
+                            <small>Máximo: 100 questões</small>
+                        </div>
+                        <button type="submit" class="btn-primary">Iniciar Teste</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Tela do Teste -->
+            <div id="test-screen" class="screen">
+                <div class="test-header">
+                    <div class="progress-info">
+                        <span id="question-counter">Questão 1/20</span>
+                        <span id="timer">5s</span>
+                    </div>
+                    <div class="stats">
+                        <span>Acertos: <span id="correct-count">0</span></span>
+                        <span>Erros: <span id="wrong-count">0</span></span>
+                    </div>
+                </div>
+
+                <div id="question-container" class="card">
+                    <div id="question-text"></div>
+                    <div id="options-container" class="options"></div>
+                    <div id="explanation" class="explanation hidden"></div>
+                </div>
+
+                <div class="test-controls">
+                    <button id="next-question" class="btn-primary" disabled>Próxima Questão</button>
+                    <button id="finish-test" class="btn-secondary">Finalizar Teste</button>
+                </div>
+            </div>
+
+            <!-- Tela de Resultado -->
+            <div id="result-screen" class="screen">
+                <div class="card">
+                    <h2>Resultado do Teste</h2>
+                    <div id="result-stats"></div>
+                    <div id="result-message"></div>
+                    <div class="result-actions">
+                        <button id="novo-teste-result" class="btn-primary">Novo Teste</button>
+                        <button id="revisar-erros" class="btn-secondary">Revisar Erros</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tela de Histórico -->
+            <div id="history-screen" class="screen">
+                <div class="card">
+                    <h2>Histórico de Resultados</h2>
+                    <div id="history-list"></div>
+                    <button id="voltar-history" class="btn-secondary">Voltar</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="questions.js"></script>
+    <script src="results.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
